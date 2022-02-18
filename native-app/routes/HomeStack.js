@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../components/screens/Home';
 import Camera from '../components/screens/Camera';
 import Bluetooth from '../components/screens/Bluetooth';
+import {Icons} from 'react-native-fontawesome';
 
 const Stack = createNativeStackNavigator();
 
