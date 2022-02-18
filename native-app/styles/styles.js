@@ -8,12 +8,12 @@ const styles = StyleSheet.create({
       paddingHorizontal: 32,
       borderRadius: 1,
       elevation: 3,
-      backgroundColor: '#803332',
+      backgroundColor: '#e5e4df',
       margin: 10,
     },
 
     buttonText: {
-        color: '#ffff'
+        color: '#000'
     },
 
     h1:{
@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
     },
 
     h3: {
-        fontSize: 16
+        fontSize: 16,
+        textAlign:'center',
     },
   
     innerContainer: {
@@ -38,12 +39,11 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'column',
       backgroundColor: '#ffff',
-      alignItems: 'center',
-      
+      alignItems: 'center',      
     },
 
     navBar: {
-        backgroundColor: '#803332'
+        backgroundColor: '#e5e4df'
 
     }
    

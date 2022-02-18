@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '../screens/HomeScreen';
-import Camera from '../screens/CameraScreen';
-import Bluetooth from '../screens/BluetoothScreen';
+import Home from '../components/screens/Home';
+import Camera from '../components/screens/Camera';
+import Bluetooth from '../components/screens/Bluetooth';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,9 +14,9 @@ export default function Navigator(){
             <Stack.Navigator 
                 initialRouteName="Home"
                 screenOptions={{headerStyle: {
-                    backgroundColor: '#803332'
+                    backgroundColor: '#e5e4df'
                 },
-                headerTintColor: '#ffff',
+                headerTintColor: '#000',
                 headerTitleStyle: {
                     fontWeight: 'normal',
                 },

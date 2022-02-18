@@ -6,11 +6,6 @@ export default function App() {
   return (
     <StatusBar style="auto" />,
     <Navigator/>
-    /*
-    <NavigationContainer>
-      <DrawerNav/>
-    </NavigationContainer>
-    */
   );
 }
 
