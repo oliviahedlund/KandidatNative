@@ -15,7 +15,7 @@ export default function Navigator() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          headerLeft: () => <Ionicons name="paper-plane" size={32} />,
+          /*headerLeft: () => <Ionicons name="paper-plane" size={32} />,*/
           headerStyle: {
             backgroundColor: "#e5e4df",
           },
