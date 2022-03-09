@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+import { Platform } from "react-native";
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
 
   buttonTextFlipBtn: {
     color: "#525252",
-    fontSize: 55,
+    fontSize: Platform.os === "ios" ? 55 : 45,
+    textAlign: "center",
+    justifyContent: "center",
   },
 
   h1: {
@@ -68,9 +70,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.3)",
     marginTop: "5%",
     marginLeft: "85%",
-    height: 52,
+    height: 40,
     width: 40,
-    padding: 1.5,
     borderRadius: 10,
   },
 
@@ -107,6 +108,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
+  },
+
+  flipimage: {
+    flex: 1,
+    transform: [{ scaleX: -1 }],
   },
 });
 
