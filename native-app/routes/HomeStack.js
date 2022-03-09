@@ -29,7 +29,7 @@ export default function Navigator() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Native App" }}
+          options={{ title: "OLIN Native" }}
         />
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="Bluetooth" component={Bluetooth} />
