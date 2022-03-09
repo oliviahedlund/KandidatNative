@@ -5,8 +5,6 @@ import Home from "../components/screens/Home";
 import Camera from "../components/screens/Camera";
 import Bluetooth from "../components/screens/Bluetooth";
 
-import { Ionicons } from "@expo/vector-icons";
-
 const Stack = createNativeStackNavigator();
 
 export default function Navigator() {
@@ -15,7 +13,6 @@ export default function Navigator() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          /*headerLeft: () => <Ionicons name="paper-plane" size={32} />,*/
           headerStyle: {
             backgroundColor: "#e5e4df",
           },
