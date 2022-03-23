@@ -16,8 +16,8 @@ const ButtonContainer = ({navigation}) => {
                 
                 <Pressable 
                     style={styles.button}
-                    onPress={() => navigation.navigate('Bluetooth')}>
-                    <Text style={styles.buttonText}>Bluetooth</Text>
+                    onPress={() => navigation.navigate('NFC')}>
+                    <Text style={styles.buttonText}>NFC</Text>
                 </Pressable>
             </View>
         </View>

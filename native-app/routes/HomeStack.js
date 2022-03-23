@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../components/screens/Home";
 import Camera from "../components/screens/Camera";
-import Bluetooth from "../components/screens/Bluetooth";
+import NFC from "../components/screens/NFC";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,7 +29,7 @@ export default function Navigator() {
           options={{ title: "OLIN Native" }}
         />
         <Stack.Screen name="Camera" component={Camera} />
-        <Stack.Screen name="Bluetooth" component={Bluetooth} />
+        <Stack.Screen name="NFC" component={NFC} />
       </Stack.Navigator>
     </NavigationContainer>
   );
