@@ -135,7 +135,7 @@ const CameraScreen = ({ navigation }) => {
               type={cameraType}
               style={styles.flexStyle}
               onCameraReady={setCameraReady}
-              ratio={ratios}
+              ratio={ratio}
               ref={(r) => {
                 camera = r;
               }}
