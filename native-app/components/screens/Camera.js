@@ -42,7 +42,7 @@ const CameraScreen = ({ navigation }) => {
     // This issue only affects Android
     if (Platform.OS === "android") {
       const ratios = await camera.getSupportedRatiosAsync();
-
+      console.log(ratios);
       // Calculate the width/height of each of the supported camera ratios
       // These width/height are measured in landscape mode
       // find the ratio that is closest to the screen ratio without going over
@@ -135,7 +135,7 @@ const CameraScreen = ({ navigation }) => {
               type={cameraType}
               style={styles.flexStyle}
               onCameraReady={setCameraReady}
-              ratio={ratio}
+              ratio={ratios}
               ref={(r) => {
                 camera = r;
               }}
@@ -181,7 +181,12 @@ const CameraPreview = ({
         <View style={styles.bottomCameraContainer}>
           <View style={styles.alignCenter}>
             <TouchableOpacity onPress={retakePicture}>
-              <Ionicons name="close" size={50} />
+              <Ionicons
+                name="close"
+                size={60}
+                color="white"
+                style={styles.shadow}
+              />
             </TouchableOpacity>
           </View>
         </View>

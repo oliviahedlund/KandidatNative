@@ -85,6 +85,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
+  shadow: {
+    textShadowColor: "#000",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 2,
+  },
+
   alignCenter: {
     alignSelf: "center",
     flex: 1,
