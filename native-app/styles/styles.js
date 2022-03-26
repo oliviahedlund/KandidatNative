@@ -48,6 +48,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  centerContainer: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: "#ffff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+
   navBar: {
     backgroundColor: "#e5e4df",
   },
