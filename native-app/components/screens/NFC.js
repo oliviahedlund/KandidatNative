@@ -23,6 +23,8 @@ const NfcScreen = ({navigation}) => {
                 const ndefRecords = tag.ndefMessage;
 
                 function decodeNdefRecord(record) {
+                    return Ndef.text.decodePayload(record.payload);
+                    /*
                     if (Ndef.isType(record, Ndef.TNF_WELL_KNOWN, Ndef.RTD_TEXT)) {
                         return ['text', Ndef.text.decodePayload(record.payload)];
                     } else if (Ndef.isType(record, Ndef.TNF_WELL_KNOWN, Ndef.RTD_URI)) {
@@ -30,14 +32,18 @@ const NfcScreen = ({navigation}) => {
                     }
 
                     return ['unknown', '---']
+                    */
                 }
-
+                /*
                 parsed = ndefRecords.map(decodeNdefRecord);
 
                 //parsed = Array(Array("text", *meddelande*))
                 const arr1 = parsed[0]; // arr1 = Array("text", *meddelande*)
                 const textMessage = arr1[1]; //textMessage = *meddelande*
                 console.warn('Meddelande: ', textMessage);
+                */
+                parsed = ndefRecords.map(decodeNdefRecord);
+                console.warn(parsed[0]);
             }
         } catch (ex) {
             console.warn('Oops!', ex);
