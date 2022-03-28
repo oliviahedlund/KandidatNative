@@ -54,8 +54,8 @@ const NfcScreen = ({navigation}) => {
     }
 
     
-    async function writeNdef({type, value}) {
-        // ta input från användare        
+    async function writeNdef() {
+        // ta input från användare    
         const userInput = writeModal;
 
         let result = false;
@@ -76,13 +76,12 @@ const NfcScreen = ({navigation}) => {
           //console.warn(ex);
         } finally {
           setScanModal(false);
-          setWriteText('');
           // STEP 4
           NfcManager.cancelTechnologyRequest();
         }
       
         return result;
-      }
+    }
 
     function cancelScan(){
         try {
@@ -102,8 +101,8 @@ const NfcScreen = ({navigation}) => {
     }
 
     function writeHelper(){
-        setWriteModal(true);
         setWriteText('');
+        setWriteModal(true);
     }
 
     return (
@@ -158,7 +157,7 @@ const NfcScreen = ({navigation}) => {
                 visible={writeModal}
                 onRequestClose={() => {
                 
-                setReadModal(!writeModal);
+                setWriteModal(!writeModal);
                 }}
             >
                 <View style={styles.centeredView}>
