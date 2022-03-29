@@ -14,7 +14,6 @@ const NfcScreen = ({navigation}) => {
     const [readText, setReadText] = useState('');
     const [writeModal, setWriteModal] = useState(false);
     const [writeText, setWriteText] = useState('');
-    const [cancelWrite, setCancelWrite] = useState(false);
 
     async function readNdef() {
         setScanModal(true);
