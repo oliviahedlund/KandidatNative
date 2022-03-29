@@ -34,7 +34,6 @@ const NfcScreen = ({navigation}) => {
                 
                 }
                 parsed = ndefRecords.map(decodeNdefRecord);
-                console.warn(parsed[0]);
                 setReadText(parsed[0]);
 
             }
@@ -55,7 +54,7 @@ const NfcScreen = ({navigation}) => {
     
     async function writeNdef() {
         // ta input från användare    
-        const userInput = writeModal;
+        const userInput = writeText;
 
         let result = false;
         setScanModal(true);
