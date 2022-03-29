@@ -17,17 +17,18 @@ const ButtonContainer = ({ navigation }) => {
 
         <Pressable
           style={styles.button}
+          onPress={() => navigation.navigate("Bluetooth")}
+        >
+          <Text style={styles.buttonText}>Bluetooth</Text>
+        </Pressable>
+        
+        <Pressable
+          style={styles.button}
           onPress={() => navigation.navigate("NFC")}
         >
           <Text style={styles.buttonText}>NFC</Text>
         </Pressable>
 
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("Bluetooth")}
-        >
-          <Text style={styles.buttonText}>Bluetooth</Text>
-        </Pressable>
       </View>
     </View>
   );
