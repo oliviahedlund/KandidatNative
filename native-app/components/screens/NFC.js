@@ -199,4 +199,3 @@ const NfcScreen = ({navigation}) => {
 }
 
 export default NfcScreen;
-
