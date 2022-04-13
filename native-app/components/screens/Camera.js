@@ -41,7 +41,7 @@ const CameraScreen = ({ navigation }) => {
   const prepareRatio = async () => {
     let desiredRatio = "4:3"; // Start with the system default
     // This issue only affects Android
-    console.warn("Nu sätts ration!");
+    console.warn("Nu sätts ratioon!");
     if (Platform.OS === "android") {
       const ratios = await camera.getSupportedRatiosAsync();
       console.log(ratios);
