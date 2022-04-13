@@ -15,73 +15,58 @@ const NfcScreen = ({navigation}) => {
     const [writeModal, setWriteModal] = useState(false);
     const [writeText, setWriteText] = useState('');
 
-    async function readNdef() {
+    const readNdef = async() => {
         setScanModal(true);
         try {
             // register for the NFC tag with NDEF in it
             await NfcManager.requestTechnology(NfcTech.Ndef);
-            let parsed = null;
             const tag = await NfcManager.getTag();
+            let parsed = null;
             
             if (tag.ndefMessage && tag.ndefMessage.length > 0) {
-                // ndefMessage is actually an array of NdefRecords, 
-                // and we can iterate through each NdefRecord, decode its payload 
-                // according to its TNF & type
+ 
                 const ndefRecords = tag.ndefMessage;
 
                 function decodeNdefRecord(record) {
                     return Ndef.text.decodePayload(record.payload);
-                
                 }
+
                 parsed = ndefRecords.map(decodeNdefRecord);
                 setReadText(parsed[0]);
-
             }
         } catch (ex) {
-            //console.warn('Oops!', ex);
             setReadText('Could not read nfc message');
+            console.log(ex);
         } finally {
             setScanModal(false);
-            // stop the nfc scanning
-            NfcManager.cancelTechnologyRequest();
-
-            // visa läst meddelande
-            setReadModal(true);
+            NfcManager.cancelTechnologyRequest(); // stop scanning
+            setReadModal(true); // show read text
         }
-    
     }
 
     
-    async function writeNdef() {
-        // ta input från användare    
-        const userInput = writeText;
-
-        let result = false;
+    const writeNdef = async() => {
+        const userInput = writeText; // input from user  
         setScanModal(true);
         try {
-           // STEP 1
+            // register for the NFC tag with NDEF in it
             await NfcManager.requestTechnology(NfcTech.Ndef);
-
             const bytes = Ndef.encodeMessage([Ndef.textRecord(userInput)]);
             
             if (bytes) {
-                await NfcManager.ndefHandler // STEP 2
-                    .writeNdefMessage(bytes); // STEP 3
-                result = true;
+                await NfcManager.ndefHandler 
+                    .writeNdefMessage(bytes); 
             }
             
         } catch (ex) {
-          //console.warn(ex);
+          console.log(ex);
         } finally {
           setScanModal(false);
-          // STEP 4
-          NfcManager.cancelTechnologyRequest();
+          NfcManager.cancelTechnologyRequest(); // stop scanning
         }
-      
-        return result;
     }
 
-    function cancelScan(){
+    const cancelScan = () => {
         try {
             NfcManager.cancelTechnologyRequest();
         }
@@ -89,16 +74,16 @@ const NfcScreen = ({navigation}) => {
             setScanModal(!scanModal);
         }
     }
-    function writeOk(){
+    const writeOk = () => {
         setWriteModal(false);
         writeNdef();
     }
 
-    function writeCancel(){
+    const writeCancel = () => {
         setWriteModal(false);
     }
 
-    function writeHelper(){
+    const writeHelper = () => {
         setWriteText('');
         setWriteModal(true);
     }
@@ -110,18 +95,17 @@ const NfcScreen = ({navigation}) => {
                 transparent={true}
                 visible={scanModal}
                 onRequestClose={() => {
-                
-                setScanModal(!scanModal);
+                    setScanModal(!scanModal);
                 }}
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Scan tag</Text>
+                        <Text>Scan tag</Text>
                         <Pressable
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.button}
                             onPress={() => cancelScan()}
                         >
-                            <Text style={styles.textStyle}>Cancel</Text>
+                            <Text>Cancel</Text>
                         </Pressable>
                     </View>
                 </View>
@@ -132,18 +116,17 @@ const NfcScreen = ({navigation}) => {
                 transparent={true}
                 visible={readModal}
                 onRequestClose={() => {
-                
-                setReadModal(!readModal);
+                    setReadModal(!readModal);
                 }}
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>{readText}</Text>
+                        <Text>{readText}</Text>
                         <Pressable
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.button}
                             onPress={() => setReadModal(false)}
                         >
-                            <Text style={styles.textStyle}>OK</Text>
+                            <Text>OK</Text>
                         </Pressable>
                     </View>
                 </View>
@@ -154,29 +137,27 @@ const NfcScreen = ({navigation}) => {
                 transparent={true}
                 visible={writeModal}
                 onRequestClose={() => {
-                
-                setWriteModal(!writeModal);
+                    setWriteModal(!writeModal);
                 }}
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <TextInput
-                            style={styles.input}
                             onChangeText={setWriteText}
                             value={writeText}
                             placeholder="Write your text here"
                         />
                         <Pressable
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.button}
                             onPress={() => writeOk()}
                         >
-                            <Text style={styles.textStyle}>OK</Text>
+                            <Text>OK</Text>
                         </Pressable>
                         <Pressable
-                            style={[styles.button, styles.buttonClose]}
+                            style={styles.button}
                             onPress={() => writeCancel()}
                         >
-                            <Text style={styles.textStyle}>Cancel</Text>
+                            <Text>Cancel</Text>
                         </Pressable>
                     </View>
                 </View>
