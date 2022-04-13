@@ -17,10 +17,13 @@ const styles = StyleSheet.create({
   },
 
   buttonTextFlipBtn: {
-    color: "#525252",
-    fontSize: Platform.os === "ios" ? 55 : 45,
-    textAlign: "center",
-    justifyContent: "center",
+    paddingTop: Platform.OS === "ios" ? 20 : 0,
+    paddingLeft: Platform.OS === "ios" ? 20 : 10,
+    color: "#fff",
+    fontSize: Platform.OS === "ios" ? 55 : 40,
+    textShadowColor: "#000",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 2,
   },
 
   h1: {
@@ -53,15 +56,15 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#ffff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 22,
   },
- 
+
   modalView: {
     margin: 20,
     backgroundColor: "white",
@@ -71,11 +74,11 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5
+    elevation: 5,
   },
 
   navBar: {
@@ -97,12 +100,17 @@ const styles = StyleSheet.create({
   },
 
   flipBtn: {
+    flexDirection: "row",
     backgroundColor: "rgba(255, 255, 255, 0.3)",
     marginTop: "5%",
     marginLeft: "85%",
     height: 40,
     width: 40,
     borderRadius: 10,
+    textAlignVertical: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
   },
 
   bottomCameraContainer: {

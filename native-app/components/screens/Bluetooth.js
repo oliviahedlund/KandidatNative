@@ -52,6 +52,7 @@ const BluetoothScreen = () => {
 
   const handleStopScanClick = () => {
     manager.stopDeviceScan();
+    console.log("stoppar");
     setIsClicked(false);
     setScanBtn(true);
   };
@@ -104,6 +105,7 @@ const BluetoothScreen = () => {
               }
               setScanBtn(false);
               setIsClicked(true);
+              console.log("startar");
               const permission = await requestPermission();
               if (permission) {
                 manager.startDeviceScan(null, null, async (error, device) => {
