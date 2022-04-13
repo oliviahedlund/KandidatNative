@@ -35,14 +35,17 @@ const CameraScreen = ({ navigation }) => {
 
   useEffect(() => {
     initCamera();
+    console.warn("hejsan");
   }, []);
 
   const prepareRatio = async () => {
     let desiredRatio = "4:3"; // Start with the system default
     // This issue only affects Android
+    console.warn("Nu sätts ration!");
     if (Platform.OS === "android") {
       const ratios = await camera.getSupportedRatiosAsync();
       console.log(ratios);
+
       // Calculate the width/height of each of the supported camera ratios
       // These width/height are measured in landscape mode
       // find the ratio that is closest to the screen ratio without going over
@@ -73,6 +76,7 @@ const CameraScreen = ({ navigation }) => {
       // set the preview padding and preview ratio
       setImagePadding(remainder);
       setRatio(desiredRatio);
+
       // Set a flag so we don't do this
       // calculation each time the screen refreshes
       setIsRatioSet(true);
@@ -97,7 +101,9 @@ const CameraScreen = ({ navigation }) => {
 
   const takePicture = async () => {
     const photo: any = await camera.takePictureAsync();
-    console.log(photo);
+    //console.log(photo);
+    console.warn("hejsan");
+    console.log("hejsan");
     setPreview(true);
     setImage(photo);
   };
@@ -113,9 +119,11 @@ const CameraScreen = ({ navigation }) => {
   const flipCamera = () => {
     if (cameraType === "back") {
       setCameraType("front");
+      //await prepareRatio();
       setMirrorImage(true);
     } else {
       setCameraType("back");
+      //await prepareRatio();
       setMirrorImage(false);
     }
   };
@@ -169,7 +177,7 @@ const CameraPreview = ({
   savePhoto,
   mirrorImage,
 }: any) => {
-  console.log("picture object: ", photo);
+  //console.log("picture object: ", photo);
   return (
     <View style={styles.imageContainer}>
       <ImageBackground

@@ -8,8 +8,8 @@ import {
   Alert,
   PermissionsAndroid,
 } from "react-native";
-import { BleManager } from "react-native-ble-plx";
 import styles from "../../styles/styles";
+import { BleManager } from "react-native-ble-plx";
 
 export const manager = new BleManager();
 
@@ -66,16 +66,15 @@ const BluetoothScreen = () => {
       {
         text: "Turn on",
         onPress: async () => {
-          const btState = await manager.state();
+          const bltState = await manager.state();
           setIsEnabled((bltOn) => !bltOn);
-          // test is bluetooth is supported
-          if (btState === "Unsupported") {
+          /*if (bltState === "Unsupported") {
             alert("Bluetooth is not supported");
             return false;
           }
-          if (btState !== "PoweredOn") {
+          if (bltState !== "PoweredOn") {
             await manager.enable();
-          }
+          }*/
           return true;
         },
       },
@@ -98,25 +97,20 @@ const BluetoothScreen = () => {
             style={styles.button}
             title="Scan"
             onPress={async () => {
-              const btState = await manager.state();
-              // test if bluetooth is powered on
-
-              if (btState !== "PoweredOn") {
+              const bltState = await manager.state();
+              if (bltState !== "PoweredOn") {
                 AlertNoBlt();
                 return false;
               }
               setScanBtn(false);
               setIsClicked(true);
-              // explicitly ask for user's permission
               const permission = await requestPermission();
               if (permission) {
                 manager.startDeviceScan(null, null, async (error, device) => {
-                  // error handling
                   if (error) {
                     console.log(error);
                     return;
                   }
-                  // found a bluetooth device
                   if (device && device.name !== null) {
                     console.log(`${device.name}`);
                     const newScannedDevices = scannedDevices;
